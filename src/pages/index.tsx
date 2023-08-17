@@ -11,8 +11,6 @@ export default function Home() {
   const onGenerate = async (e: any) => {
     e.preventDefault();
     setAnswer(undefined)
-    // const results = await fetch('/api/generate').then(res => res.json());
-    // setAnswer(results.botAnswer);
     const { botAnswer } = await fetch('/api/generate', {
       method: 'POST',
       body: JSON.stringify({ question })
