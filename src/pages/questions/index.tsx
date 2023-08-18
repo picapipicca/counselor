@@ -4,9 +4,9 @@ import Card from "@/components/Card";
 
 const QuestionPage = () => {
     const [currentIdx, setCurrentIdx] = useState(0);
-    const [question, setQuestion] = useState<string>('');
+    const [question, setQuestion] = useState<any>(questionArr);
     const [answer, setAnswer] = useState<any>();
-
+    const [addText, setAddText] = useState('');
     const onGenerate = async () => {
         setAnswer(undefined)
         const { botAnswer } = await fetch('/api/generate', {
@@ -26,6 +26,7 @@ const QuestionPage = () => {
     // 구상 : questionArr를 어드민에서 관리한다 어드민에서 가지고오기
     // 질문 장르에 따라 버튼을 만들어서 (어드민에서 만들면 생기게) 들어갈수있게
     //예: 관계 유지, 관계 이별, 사랑을 갈구, 등등 그 mei 페이지 다시 들어가보기
+    // global css 에 apply error남
 
     const goBack = (idx: number) => {
         setCurrentIdx(idx - 1);
@@ -35,10 +36,12 @@ const QuestionPage = () => {
             setCurrentIdx(currentIdx + 1);
         }
         if (direction === 'result') {
-            onGenerate()
+            // onGenerate()
 
         }
     }
+    console.log(question, 'question')
+    console.log(addText, 'addText')
     return (
         <main className="w-full">
             {answer ? (<div className="flex flex-col items-center">{answer}</div>) :
@@ -47,18 +50,19 @@ const QuestionPage = () => {
                         questionArr.map((section: any, index: number) => {
                             if (currentIdx === index) {
                                 return (
-                                    <div key={index}>
-                                        <p className="font-semibold text-lg">{index + 1}/{questionArr.length}</p>
+                                    <div key={index} className="pt-8">
+                                        <p className="font-semibold text-lg text-center">{index + 1}/{questionArr.length}</p>
                                         <Card index={currentIdx} section={section} setQuestion={setQuestion} />
-                                        <div className="flex">
-                                            {index > 0 && <button onClick={() => goBack(index)} className="fixed left-0">&lt;</button>}
-                                            <button className="fixed right-0" onClick={() => onSwipe(index === questionArr.length - 1 ? 'result' : 'right')}>{index < (questionArr.length - 1) ? `>` : `결과보기`}</button>
+                                        <div className="w-1/4 h-10 mx-auto grid grid-cols-6 justify-items-center -mt-12">
+                                            {index > 0 && <button onClick={() => goBack(index)} className="w-10 animate-fade-in rounded-full px-4 py-1.5 text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black">&lt;</button>}
+                                            {index < questionArr.length - 1 && <button className="w-10 col-end-7 animate-fade-in rounded-full px-4 py-1.5 text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black" onClick={() => onSwipe('right')}>{`>`}</button>}
                                         </div>
                                     </div>
                                 )
                             }
                         })
                     }
+                    {currentIdx === (questionArr.length - 1) && <div><div className="mx-auto w-full text-center p-6 space-y-2"><h3>추가로 작성하고싶은 고민을 입력하세요!</h3><textarea rows={5} className="rounded w-1/4 border border-gray-300" placeholder="없다면 빈칸으로 남겨두어도 좋습니다 :) " onChange={(e) => setAddText(e.target.value)} /></div><button className="mx-auto mb-8 black_btn">결과보기</button></div>}
                 </>
             }
         </main>

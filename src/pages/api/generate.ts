@@ -13,7 +13,6 @@ export default async function handler(
   const body = JSON.parse(req.body);
   const { question } = body || {};
 
-  console.log("0", body.question);
   const completion = await openai.createChatCompletion({
     model:
       "gpt-3.5-turbo",
@@ -33,6 +32,6 @@ export default async function handler(
 
   });
   const botAnswer = completion.data.choices[0].message.content;
-  console.log("1", botAnswer);
+  
   res.status(200).json({ botAnswer });
 }

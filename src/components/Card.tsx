@@ -7,7 +7,6 @@ interface CardProps {
 const Card = ({ setQuestion, section, index }: CardProps) => {
 
     const onSaveAnswer = (option: string, isMe: string) => {
-        console.log(option, isMe)
         setQuestion((prev: any) => {
             const updatedQestionArr = [...prev];
             updatedQestionArr[index].answer[isMe] = option;
