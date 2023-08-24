@@ -1,17 +1,14 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import openai from "@/utils/openai";
-
-type Data = {
-  name: string
-}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+
   const body = JSON.parse(req.body);
-  const { question } = body || {};
+  const { userAnswer } = body || {};
 
   const completion = await openai.createChatCompletion({
     model:
@@ -20,18 +17,18 @@ export default async function handler(
       [
         {
           role: "user",
-          content: `${question}`
+          content: `${userAnswer}`
         },
         {
           role: "system",
-          content: "you are a dating counselor for couples. please answer the following questions in korean in 5 options in a nutshell. and recap the advice with keywords. "
+          content: "you are a helpful,professional dating counselor. please offer 3 way of accessible, convenient and affordable solution to help struggling couples to improve their relationship. please answer in korean within 700 characters and show the keywords at the end."
         }
       ],
-    max_tokens: 400,
-    temperature: 0.7
+    max_tokens: 500,
+    temperature: 1
 
   });
   const botAnswer = completion.data.choices[0].message.content;
-  
+
   res.status(200).json({ botAnswer });
 }
