@@ -77,6 +77,10 @@
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
+.primary_btn{
+  @apply p-2 sm:py-3 sm:px-5 mr-1 mb-2 text-sm font-medium focus:outline-none rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200
+}
+
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
@@ -105,3 +109,11 @@
 .description {
   @apply mt-5 text-lg text-gray-500 sm:text-lg max-w-2xl;
 }
+
+/* .card_btn_goBack {
+  @apply col-span-3 col-start-1 col-end-4 bg-red-100 animate-fade-in rounded-l-lg w-full text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black
+}
+
+.card_btn_next {
+  @apply w-full col-span-3 col-start-4 col-end-7 animate-fade-in bg-blue-100 rounded-r-lg text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black
+} */

@@ -12,6 +12,8 @@ const config: Config = {
       fontFamily: {
         satoshi: ["Satoshi", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        song: ["SongMyung", "sans-serif"],
+
       },
       colors: {
         "primary-orange": "#FF5722",
