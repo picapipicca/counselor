@@ -1,9 +1,6 @@
-import { Inter } from 'next/font/google'
-import Layout from '@/components/Layout';
 import Link from 'next/link';
+import Spline from "@splinetool/react-spline";
 
-
-const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
 
   return (
@@ -17,18 +14,17 @@ export default function Home() {
         친구에게도 가족에게도 마음편히 말할수 없는 연애 고민을,
         <br /> AI 연애 상담사에게 말하고 상담받아 보세요.
       </p>
-      <div className='sm:mt-0 my-4'>
-        {/*TODO: <canvas> 타로 회전하는 원 </canvas> */}
+      <div className="sm:mt-0 my-4">
+        <Spline scene="https://prod.spline.design/SZT3gzLahYW6lxNW/scene.splinecode" />
       </div>
 
-      <div>
+      <button className='w-full'>
         <Link
           href="/questions"
-          className="text-lg font-semibold hover:animate-bounce w-fit min-w-[100px] sm:px-10 py-2 rounded-full border bg-white shadow-lg"
-        >
+          className="text-lg font-semibold hover:animate-bounce w-fit px-6 min-w-[100px] sm:px-10 py-3 rounded-full bg-white shadow-lg mx-auto">
           시작하기
         </Link>
-      </div>
+      </button>
     </section>
   )
 }

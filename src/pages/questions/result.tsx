@@ -33,6 +33,7 @@ const ResultPage = () => {
                             })
                         })
                 } catch (e) {
+                    // TODO:console error처리
                     console.log(e);
                 }
             }

@@ -18,6 +18,10 @@ const config: Config = {
       colors: {
         "primary-orange": "#FF5722",
       },
+      screens: {
+        'xxs': { 'raw': '(min-width: 320px)' },
+        'xs': { 'raw': '(min-width: 480px)' },
+      }
     },
   },
   plugins: [],

@@ -27,7 +27,7 @@
 
 .main:after {
   content: "";
-  background-image: url("/assets/images/vercel.svg");
+  /* background-image: url("/assets/images/crystal_ball.png"); */
   z-index: 1;
   position: absolute;
   width: 100%;
@@ -87,16 +87,27 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply invisible sm:visible font-semibold text-lg text-black tracking-wide my-auto;
 }
 
-.dropdown {
-  @apply absolute right-0 top-full mt-3 w-fit p-5 rounded-lg bg-white min-w-[100px] flex flex-col gap-2 justify-end items-end;
+.menu ul {
+  @apply absolute right-0 top-8 -mt-4 sm:mt-3 p-5 opacity-0 transition-all duration-500 ease-in-out w-fit;
 }
-
+.menu li:hover ul {
+  @apply opacity-100 h-fit w-fit min-w-[100px] translate-y-0;
+}
 .dropdown_detail {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply bg-white text-gray-700 block px-5 py-2 text-center no-underline hover:text-gray-500 font-medium;
 }
+/* .dropdown {
+  @apply absolute right-0 top-full mt-3 w-fit p-5 rounded-lg text-xl bg-white  min-w-[100px] flex flex-col gap-2 justify-end items-end transition-all duration-500 ease-in-out;
+} */
+/* .menu {
+  @apply relative block my-0 mx-auto w-fit;
+} */
+/* .dropdown_detail {
+  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+} */
 
 .head_text {
   @apply text-5xl font-extrabold leading-[1.15] text-black sm:text-5xl;
@@ -110,10 +121,6 @@
   @apply mt-5 text-lg text-gray-500 sm:text-lg max-w-2xl;
 }
 
-/* .card_btn_goBack {
-  @apply col-span-3 col-start-1 col-end-4 bg-red-100 animate-fade-in rounded-l-lg w-full text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black
+.result_txt {
+  @apply absolute w-[75%] left-[13%] top-[20%] sm:top-[52%] sm:left-1/2 sm:w-[50%] md:w-[40%] lg:w-[28%] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:text-lg items-center
 }
-
-.card_btn_next {
-  @apply w-full col-span-3 col-start-4 col-end-7 animate-fade-in bg-blue-100 rounded-r-lg text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black
-} */

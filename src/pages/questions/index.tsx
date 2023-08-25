@@ -23,6 +23,8 @@ const QuestionPage = () => {
     const [inputBox, setInputBox] = useState(false);
     const [answer, setAnswer] = useState('');
     const { transQuestion } = useTransText()
+    const images = ["card_img_1.png", "card_img_2.png"];
+    const chosenImage = images[(new Date().getMinutes() % 2)]
 
     const form = useForm<FormValues>({
         defaultValues: {
@@ -53,7 +55,6 @@ const QuestionPage = () => {
     }
 
     const onGenerate = async (userAnswer: string) => {
-
         const response = await fetch('/api/chat-stream', {
             method: "POST",
             body: JSON.stringify({ userAnswer }),
@@ -75,6 +76,7 @@ const QuestionPage = () => {
 
                         })
                 } catch (e) {
+                    // TODO:console error처리
                     console.log(e);
                 }
             }
@@ -94,13 +96,11 @@ const QuestionPage = () => {
         <main className="w-full">
             {answer ? <div className={song.className}>
                 <div className="w-full mx-auto">
-                    <Image src="/assets/images/taro-card.png" alt="card" width={530} height={530} className="mx-auto sm:visible invisible" />
-                    <Image src="/assets/images/taro-6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto sm:invisible visible" />
+                    <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
+                    <Image src="/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" />
                 </div>
-                <div className="w-full mx-auto">
-                </div>
-                <div className="absolute w-[75%] left-[13%] top-[20%] sm:top-[25%] sm:left-1/2 sm:w-[25%] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:text-base items-center">
-                    <p className="mx-auto text-base sm:text-lg text-gray-600">{answer}</p>
+                <div className="result_txt">
+                    <p className="mx-auto text-gray-600">{answer}</p>
                 </div>
             </div> :
                 <>

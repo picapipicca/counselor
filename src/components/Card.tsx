@@ -12,7 +12,7 @@ const Card = ({ control, section, index, errors }: CardProps) => {
     const results = useWatch({ control, name: "question" })
     
     return (
-        <section className="mx-auto sm:max-w-2xl w-full px-6 py-10 bg-white border border-gray-200 rounded-lg shadow sm:p-10 sm:h-[45vh] h-[50vh]">
+        <section className="mx-auto sm:max-w-2xl w-full px-6 py-10 bg-white border border-gray-200 rounded-lg shadow sm:p-10 sm:h-[45vh] h-fit min-h-[47vh] min">
             <h3 className="mb-3 text-xl font-medium text-gray-900 md:text-xl"> <span className="text-orange-600">Q.</span>&nbsp; {section.title}</h3>
             <div className="py-6 space-y-3">
                 <p>본인</p>
