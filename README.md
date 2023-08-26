@@ -10,7 +10,3 @@ Front
 - Tailwind css
 - Spline,  openAI, React-Hook-Form
 - Deploy on Vercel
-
-Back
-- 
-- 
