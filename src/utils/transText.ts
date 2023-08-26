@@ -4,7 +4,7 @@ const useTransText = () => {
 
         const sentences = [];
 
-        // 대답을 한글로 변환하는 함수
+        // 한글변환 함수
         function convertAnswerToKorean(answer: string) {
             if (answer === "X" || answer === "O") {
                 return answer === "O" ? "그렇다" : "아니다";
@@ -16,7 +16,6 @@ const useTransText = () => {
         }
         for (let i = 0; i < questionArray.length; i++) {
             const question = questionArray[i];
-            // const answer = answers[i];
             const answer = answers[i].id === question.id ? answers[i] : null;
 
             if (answer) {

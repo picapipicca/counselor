@@ -1,14 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface IquestionProps {
-    // addText: string;
-    // question: { id: number, me: string, you: string }[];
     answerInLine: string;
 }
 
 const initialState: IquestionProps = {
     answerInLine: ""
-    // question: [],
 }
 
 

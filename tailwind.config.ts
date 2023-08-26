@@ -10,8 +10,6 @@ const config: Config = {
     extend: {
       backgroundImage: {},
       fontFamily: {
-        satoshi: ["Satoshi", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
         song: ["SongMyung", "sans-serif"],
 
       },

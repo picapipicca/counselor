@@ -1,21 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: main 쪽 싹다 바꾸기!  */
-.main {
-  width: 100vw;
+.container {
+  width:100vw;
   min-height: 100vh;
   position: fixed;
   display: flex;
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
+  max-width:1713px;
 }
 
-.main:before {
+.container:before {
   background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
   position: absolute;
   content: "";
@@ -25,19 +24,8 @@
   top: 0;
 }
 
-.main:after {
-  content: "";
-  /* background-image: url("/assets/images/crystal_ball.png"); */
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0.4;
-  filter: invert(1);
-}
 
-.gradient {
+.background_gradation {
   height: fit-content;
   z-index: 3;
   width: 100%;
@@ -66,15 +54,12 @@
   }
 }
 
-
-/* Tailwind Styles */
-
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
 }
 
 .primary_btn{
@@ -82,7 +67,7 @@
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm flex items-center justify-center;
 }
 
 /* Nav Component */
@@ -99,16 +84,6 @@
 .dropdown_detail {
   @apply bg-white text-gray-700 block px-5 py-2 text-center no-underline hover:text-gray-500 font-medium;
 }
-/* .dropdown {
-  @apply absolute right-0 top-full mt-3 w-fit p-5 rounded-lg text-xl bg-white  min-w-[100px] flex flex-col gap-2 justify-end items-end transition-all duration-500 ease-in-out;
-} */
-/* .menu {
-  @apply relative block my-0 mx-auto w-fit;
-} */
-/* .dropdown_detail {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
-} */
-
 .head_text {
   @apply text-5xl font-extrabold leading-[1.15] text-black sm:text-5xl;
 }

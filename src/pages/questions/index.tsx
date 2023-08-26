@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-// import { useAppDispatch } from "@/redux/hook";
-// import { storeQuestion } from "@/redux/resSlice"
-import { questionArr } from "@/utils/dummy";
+import { questionArr } from "@/utils/questionData";
 import Card from "@/components/Card";
 import useTransText from "@/utils/transText";
 import { createParser } from "eventsource-parser";
@@ -37,8 +35,6 @@ const QuestionPage = () => {
     const onSubmit = (data: any) => {
         const answerInLine = transQuestion(questionArr, data.question, data.addText);
         onGenerate(answerInLine)
-        // dispatch(storeQuestion({ answerInLine }))
-        // router.push('/questions/result');
     }
 
     const goBack = (idx: number) => {
@@ -76,8 +72,7 @@ const QuestionPage = () => {
 
                         })
                 } catch (e) {
-                    // TODO:console error처리
-                    console.log(e);
+                    alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요")
                 }
             }
         }
