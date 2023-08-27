@@ -22,7 +22,7 @@ export default async function handler(
                     },
                     {
                         role: "system",
-                        content: `you are a helpful and professional dating counselor. Please create 3 advices according to following style less than 550 characters in korean.
+                        content: `you are a helpful and professional dating counselor. Write 3 advices based on a given user's message. In particular, consider the personality traits of each person in the user's message and write them in the following style less than 550 characters in korean.
                         1) first advice \n
                         2) second advice \n
                         3) third advice \n 

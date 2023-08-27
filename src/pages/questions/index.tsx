@@ -121,8 +121,10 @@ const QuestionPage = () => {
                     {inputBox &&
                         <section>
                             <div className="mx-auto w-full text-center p-6 space-y-2">
-                                <h3>추가로 작성하고싶은 고민을 입력하세요!</h3>
-                                <textarea rows={5} className="focus:outline-none focus:ring-neutral-500 focus:ring-1 sm:max-w-2xl w-full rounded-md border border-neutral-400 p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900" placeholder="없다면 빈칸으로 남겨두어도 좋습니다 :)" {...register("addText")} />
+                                <h3>추가로 작성하고싶은 고민을 입력하세요! </h3>
+                                <textarea rows={5} 
+                                className="focus:outline-none focus:ring-neutral-500 focus:ring-1 sm:max-w-2xl w-full rounded-md border border-neutral-400 p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900" 
+                                placeholder="예시 ) 그 사람과 더 잘 지내고 싶어요 / (어떤 상황에서) 자꾸 다투게 되요. 어떻게 해야 이런 상황을 피할수 있을까요? / 연인은 (이러이러한) 성격입니다. 상처 받지 않게 설득하는 방법이 있을까요? 등등.." {...register("addText")} />
                             </div>
                             <button className="mx-auto mb-8 black_btn" onClick={handleSubmit(onSubmit)}>
                                 결과보기
