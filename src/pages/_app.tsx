@@ -1,12 +1,15 @@
 import Layout from '@/components/Layout'
-import { Providers } from '@/redux/provider'
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
 import Script from 'next/script'
+import type { AppProps } from 'next/app'
+import { Providers } from '@/redux/provider'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../seo.config'
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
+      <DefaultSeo {...SEO} />
       <Script strategy='afterInteractive' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`} />
       <Script
         id='gtag-init'

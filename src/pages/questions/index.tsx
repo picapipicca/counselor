@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import { questionArr } from "@/utils/questionData";
-import Card from "@/components/Card";
-import useTransText from "@/utils/transText";
-import { createParser } from "eventsource-parser";
-import { Song_Myung } from "next/font/google";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { Song_Myung } from "next/font/google";
+import { createParser } from "eventsource-parser";
+import { DefaultSeo } from "next-seo";
+import useTransText from "@/utils/transText";
+import Card from "@/components/Card";
+import { questionArr } from "@/utils/questionData";
 
 const song = Song_Myung({ weight: "400", subsets: ['latin'], })
 
@@ -16,7 +16,6 @@ type FormValues = {
 }
 
 const QuestionPage = () => {
-
     const [currentIdx, setCurrentIdx] = useState(0);
     const [inputBox, setInputBox] = useState(false);
     const [answer, setAnswer] = useState('');
@@ -24,13 +23,13 @@ const QuestionPage = () => {
     const images = ["card_img_1.png", "card_img_2.png"];
     const chosenImage = images[(new Date().getMinutes() % 2)]
 
-    const form = useForm<FormValues>({
-        defaultValues: {
-            addText: "",
-            question: questionArr.map((el: any) => ({ id: el.id, me: "", you: "" }))
-        }
-    })
-    const { handleSubmit, register, control, formState: { errors } } = form;
+    const { handleSubmit, register, control, formState: { errors } } = useForm<FormValues>
+        ({
+            defaultValues: {
+                addText: "",
+                question: questionArr.map((el: any) => ({ id: el.id, me: "", you: "" }))
+            }
+        });
 
     const onSubmit = (data: any) => {
         const answerInLine = transQuestion(questionArr, data.question, data.addText);
@@ -72,7 +71,7 @@ const QuestionPage = () => {
 
                         })
                 } catch (e) {
-                    alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요")
+                    alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
                 }
             }
         }
@@ -89,6 +88,15 @@ const QuestionPage = () => {
 
     return (
         <main className="w-full">
+            <DefaultSeo
+                title="상담 중"
+                openGraph={{
+                    type: 'website',
+                    url: 'https://datexpert.site/questions',
+                    siteName: 'AI 연애 상담사',
+                    locale: 'ko_KR',
+                }}
+            />
             {answer ? <div className={song.className}>
                 <div className="w-full mx-auto">
                     <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
@@ -122,9 +130,9 @@ const QuestionPage = () => {
                         <section>
                             <div className="mx-auto w-full text-center p-6 space-y-2">
                                 <h3>추가로 작성하고싶은 고민을 입력하세요! </h3>
-                                <textarea rows={5} 
-                                className="focus:outline-none focus:ring-neutral-500 focus:ring-1 sm:max-w-2xl w-full rounded-md border border-neutral-400 p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900" 
-                                placeholder="예시 ) 그 사람과 더 잘 지내고 싶어요 / (어떤 상황에서) 자꾸 다투게 되요. 어떻게 해야 이런 상황을 피할수 있을까요? / 연인은 (이러이러한) 성격입니다. 상처 받지 않게 설득하는 방법이 있을까요? 등등.." {...register("addText")} />
+                                <textarea rows={5}
+                                    className="focus:outline-none focus:ring-neutral-500 focus:ring-1 sm:max-w-2xl w-full rounded-md border border-neutral-400 p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900"
+                                    placeholder="예시 ) 그 사람과 더 잘 지내고 싶어요 / (어떤 상황에서) 자꾸 다투게 되요. 어떻게 해야 이런 상황을 피할수 있을까요? / 연인은 (이러이러한) 성격입니다. 상처 받지 않게 설득하는 방법이 있을까요? 등등.." {...register("addText")} />
                             </div>
                             <button className="mx-auto mb-8 black_btn" onClick={handleSubmit(onSubmit)}>
                                 결과보기

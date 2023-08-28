@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /admin
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+Allow: /$
+Allow: /favicon.ico
+Allow: /*.gif$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.css$
+Allow: /*.js$
+Allow:/questions
+
+Sitemap: http://datexpert.site/sitemap.xml
