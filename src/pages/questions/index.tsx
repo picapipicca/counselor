@@ -69,6 +69,7 @@ const QuestionPage = () => {
                                 return `${prev || ''}${delta.content}`
                             });
 
+                            
                         })
                 } catch (e) {
                     alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")

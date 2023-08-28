@@ -16,7 +16,7 @@ export default function Home() {
         <br /> AI 연애 상담사에게 말하고 상담받아 보세요.
       </p>
       <div className="sm:mt-0 my-4">
-        <Spline scene="https://prod.spline.design/SZT3gzLahYW6lxNW/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/xPpQxozsoLhK8fWZ/scene.splinecode" />
       </div>
 
       <button className='w-full'>
