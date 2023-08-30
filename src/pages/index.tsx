@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Spline from "@splinetool/react-spline";
+// import Spline from "@splinetool/react-spline";
 import dynamic from 'next/dynamic';
-// const Spline = dynamic(() => import('@splinetool/react-spline'), { loading: () => <div className="w-full min-h-fit h-[50vh]"><p>Loading....</p></div> });
+const Spline = dynamic(() => import('@splinetool/react-spline'), { loading: () => <div className="w-full min-h-fit h-[50vh]"><p>Loading....</p></div> });
 import { NextSeo } from 'next-seo';
 import { Suspense } from 'react';
 
@@ -18,14 +18,14 @@ export default function Home() {
         친구에게도 가족에게도 마음편히 말할수 없는 연애 고민을,
         <br /> AI 연애 상담사에게 말하고 상담받아 보세요.
       </p>
-      {/* <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh]">
-        <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode"/>
-      </div>   */}
       <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh]">
+        <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode" />
+      </div>
+      {/* <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh]">
         <Suspense fallback={<p>Loading...</p>}>
           <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode" />
         </Suspense>
-      </div>
+      </div> */}
 
       <button className='w-full'>
         <Link
