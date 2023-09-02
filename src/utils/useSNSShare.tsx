@@ -8,11 +8,12 @@ interface UseSNSShareParams {
     }
 }
 
-declare global {
-    interface Window {
-        Kakao: any;
-    }
-}
+// declare global {
+//     interface Window {
+//         Kakao: any;
+//     }
+// }
+
 export const isShareSupported = () => navigator.share ?? false;
 
 const useSNSShare = ({ title, url, option }: UseSNSShareParams) => {

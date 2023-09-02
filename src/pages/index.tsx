@@ -18,11 +18,11 @@ export default function Home() {
         친구에게도 가족에게도 마음편히 말할수 없는 연애 고민을,
         <br /> AI 연애 상담사에게 말하고 상담받아 보세요.
       </p>
-      <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh] flex">
-        <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode" />
+      <div className="sm:mb-10 sm:w-full w-full mb-4 min-h-fit sm:h-[50vh] h-[35vh] flex ">
+        <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode"/>
       </div>
 
-      <button className='w-full'>
+      <button className='w-full mt-6'>
         <Link
           href="/questions"
           className="text-lg font-semibold hover:animate-bounce w-fit px-6 min-w-[100px] sm:px-10 py-3 rounded-full bg-white shadow-lg mx-auto">

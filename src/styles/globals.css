@@ -85,7 +85,7 @@
   @apply  rounded-lg bg-white space-y-1 text-gray-700 block px-5 py-2 text-center no-underline w-full hover:text-gray-500 font-medium mx-auto;
 }
 .head_text {
-  @apply text-5xl font-extrabold leading-[1.15] text-black sm:text-5xl;
+  @apply text-4xl font-extrabold leading-[1.15] text-black sm:text-5xl;
 }
 
 .red_gradient {
