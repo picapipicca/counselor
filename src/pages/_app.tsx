@@ -6,6 +6,12 @@ import { DefaultSeo } from 'next-seo'
 import SEO from '../../seo.config'
 import '@/styles/globals.css'
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>

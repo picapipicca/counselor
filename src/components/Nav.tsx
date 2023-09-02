@@ -5,8 +5,9 @@ import HamburgerIcon from "./HamburgerIcon";
 import useSNSShare from "@/utils/useSNSShare";
 
 const Nav = () => {
+
     const [toggleDropdown, setToggleDropdown] = useState(false);
-    const { shareToFaceBook, shareToKakaoTalk, shareToNavigator } = useSNSShare({ title: "AI 연애고민 상담소", url: "https://datexpert.site" });
+    const { shareToFaceBook, shareToNavigator } = useSNSShare({ title: "AI 연애고민 상담소", url: "https://datexpert.site" });
     // const onHandleShare = () => {
     //     if (navigator.share) {
     //         navigator.share({
@@ -29,6 +30,47 @@ const Nav = () => {
     //     }
 
     // }
+    const shareToKakaoTalk = () => {
+        const kakao = window.Kakao;
+        kakao.Share.sendDefault({
+            objectType: "feed",
+            content: {
+                title: "AI 연애고민 상담소",
+                description: 'AI 연애고민 상담소에 오신 것을 환영합니다. AI가 당신의 연애고민을 해결해드릴게요. 지금 바로 AI 연애고민 상담소에 연애고민을 남겨보세요!',
+                imageUrl:
+                    // 'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+                    "",
+                link: {
+                    mobileWebUrl: "https://datexpert.site",
+                    webUrl: "https://datexpert.site",
+                },
+                buttons: [
+                    {
+                        title: "나도 테스트 하러가기",
+                        link: {
+                            mobileWebUrl: "https://datexpert.site",
+                        }
+                    }
+                ]
+            },
+            text: "AI 연애고민 상담소",
+            link: {
+                mobileWebUrl: "https://datexpert.site",
+                webUrl: "https://datexpert.site",
+            },
+        });
+    };
+
+    useEffect(() => {
+        const kakao = window.Kakao;
+        if (kakao === undefined) {
+            return;
+        }
+        if (!kakao.isInitialized()) {
+            kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+        }
+    }, []);
+
     return (
         <nav className="flex justify-between w-full sm:mb-4 mb-4 pt-3">
             <Link href="/" className="flex gap-2 flex-center">
@@ -58,7 +100,7 @@ const Nav = () => {
                                 </li>
                                 <li>
                                     <div className="mx-auto bg-[#f1f0ea] text-center p-1 space-y-1 rounded-lg" onClick={() => setToggleDropdown(false)}>공유하기
-                                        <button className="dropdown_detail" type="button" onClick={() => shareToKakaoTalk()}>카카오톡</button>
+                                        <button className="dropdown_detail" type="button" onClick={shareToKakaoTalk}>카카오톡</button>
                                         <button className="dropdown_detail" type="button" onClick={() => shareToFaceBook()}>페이스북</button>
                                         <button className="dropdown_detail" type="button" onClick={() => shareToNavigator({ title: "AI 연애고민 상담소", url: "https://datexpert.site" })}> url</button>
                                     </div>
