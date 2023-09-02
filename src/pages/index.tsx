@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import Spline from "@splinetool/react-spline";
-import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-// const Spline = dynamic(() => import('@splinetool/react-spline'), { loading: () => <div className="w-full min-h-fit h-[50vh]"><p>Loading....</p></div> });
+const Spline = dynamic(() => import('@splinetool/react-spline'),
+  {
+    ssr: false,
+    loading: () => <div className='mx-auto my-auto w-[60%] h-[60%] rounded-full bg-gradient-to-r from-indigo-300 from-10% via-orange-300 via-40% to-pink-300 to-90% blur-sm animate-pulse' />
+  });
 
 export default function Home() {
   return (
@@ -16,13 +18,8 @@ export default function Home() {
         친구에게도 가족에게도 마음편히 말할수 없는 연애 고민을,
         <br /> AI 연애 상담사에게 말하고 상담받아 보세요.
       </p>
-      {/* <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh]">
+      <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh] flex">
         <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode" />
-      </div> */}
-      <div className="sm:mb-10 mb-4 w-full min-h-fit h-[50vh]">
-        <Suspense fallback={<div className='w-[70%] aspect-square rounded-full bg-gradient-to-r from-indigo-300 from-10% via-orange-300 via-40% to-pink-300 to-90% blur-sm'/>}>
-          <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode" />
-        </Suspense>
       </div>
 
       <button className='w-full'>

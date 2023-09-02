@@ -1,10 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HamburgerIcon from "./HamburgerIcon";
+import useSNSShare from "@/utils/useSNSShare";
 
 const Nav = () => {
     const [toggleDropdown, setToggleDropdown] = useState(false);
+    const { shareToFaceBook, shareToKakaoTalk, shareToNavigator } = useSNSShare({ title: "AI 연애고민 상담소", url: "https://datexpert.site" });
+    // const onHandleShare = () => {
+    //     if (navigator.share) {
+    //         navigator.share({
+    //             title: '연애고민 상담소',
+    //             text: 'AI에게 받는 연애상담, 궁금하지 않으신가요~?',
+    //             url: 'https://datexpert.site/',
+    //         })
+    //             .then(() => alert('url이 복사되었습니다!'))
+    //             .catch((error) => console.log('url 복사에 실패하였습니다'));
+    //     } else {
+    //         alert('공유하기가 지원되지 않는 환경입니다');
+    //     }
+    // }
+    // const handleShare = () => {
+    //     const result = await share(dataToShare);
+    //     if (result === "copyToClipboard") {
+    //         alert("링크를 클립보드에 복사하였습니다.");
+    //     } else if (result === "fail") {
+    //         alert("공유하기가 지원되지 않는 환경입니다.");
+    //     }
+
+    // }
     return (
         <nav className="flex justify-between w-full sm:mb-4 mb-4 pt-3">
             <Link href="/" className="flex gap-2 flex-center">
@@ -15,7 +39,7 @@ const Nav = () => {
             {/* Desktop Navigation */}
             <div className="sm:flex hidden">
                 <div className="flex gap-3 md:gap-5">
-                    <button type="button" className="black_btn">공유하기</button>
+                    <button type="button" className="black_btn" onClick={() => shareToNavigator({ title: "AI 연애고민 상담소", url: "https://datexpert.site" })}>공유하기</button>
                     <Link href={"/"} className="outline_btn">홈</Link>
                 </div>
             </div>
@@ -24,7 +48,7 @@ const Nav = () => {
             <div className="sm:hidden">
                 <ul className="menu">
                     <li onClick={() => setToggleDropdown((prev) => !prev)} onBlur={() => setToggleDropdown(false)}>
-                            <HamburgerIcon />
+                        <HamburgerIcon />
                         {toggleDropdown && (
                             <ul className="group-hover:visible">
                                 <li>
@@ -33,16 +57,21 @@ const Nav = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <button className="dropdown_detail" type="button" onClick={() => setToggleDropdown(false)}>
+                                    <div className="mx-auto bg-[#f1f0ea] text-center p-1 space-y-1 rounded-lg" onClick={() => setToggleDropdown(false)}>공유하기
+                                        <button className="dropdown_detail" type="button" onClick={() => shareToKakaoTalk()}>카카오톡</button>
+                                        <button className="dropdown_detail" type="button" onClick={() => shareToFaceBook()}>페이스북</button>
+                                        <button className="dropdown_detail" type="button" onClick={() => shareToNavigator({ title: "AI 연애고민 상담소", url: "https://datexpert.site" })}> url</button>
+                                    </div>
+                                    {/* <button className="dropdown_detail" type="button" onClick={() => { setToggleDropdown(false); shareToKakaoTalk(); }}>
                                         공유하기
-                                    </button>
+                                    </button> */}
                                 </li>
                             </ul>
                         )}
                     </li>
                 </ul>
-            </div>
-        </nav>
+            </div >
+        </nav >
     );
 }
 

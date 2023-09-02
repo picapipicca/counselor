@@ -79,10 +79,10 @@
   @apply absolute right-0 top-8 -mt-4 sm:mt-3 p-5 opacity-0 transition-all duration-500 ease-in-out w-fit;
 }
 .menu li:hover ul {
-  @apply opacity-100 h-fit w-fit min-w-[100px] translate-y-0;
+  @apply opacity-100 h-fit w-fit min-w-[100px] translate-y-0 space-y-0.5;
 }
 .dropdown_detail {
-  @apply bg-white text-gray-700 block px-5 py-2 text-center no-underline hover:text-gray-500 font-medium;
+  @apply  rounded-lg bg-white space-y-1 text-gray-700 block px-5 py-2 text-center no-underline w-full hover:text-gray-500 font-medium mx-auto;
 }
 .head_text {
   @apply text-5xl font-extrabold leading-[1.15] text-black sm:text-5xl;
