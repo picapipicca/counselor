@@ -96,7 +96,8 @@ const useSNSShare = ({ title, url, option }: UseSNSShareParams) => {
 
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+        // script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+        script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
         script.async = true;
 
         document.body.appendChild(script);
