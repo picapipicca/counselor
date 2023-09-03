@@ -13,7 +13,7 @@
     "@react-spring/web": "^9.5.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^0.9.431",
+    "@splinetool/runtime": "^0.9.436",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
