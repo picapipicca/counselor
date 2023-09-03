@@ -31,9 +31,11 @@ const Nav = () => {
                         {toggleDropdown && (
                             <ul className="group-hover:visible">
                                 <li>
-                                    <Link href={"/"} className="dropdown_detail" onClick={() => setToggleDropdown(false)}>
-                                        홈으로
-                                    </Link>
+                                    <div className="mx-auto bg-[#f1f0ea] text-center p-1 rounded-lg">
+                                        <Link href={"/"} className="dropdown_detail" onClick={() => setToggleDropdown(false)}>
+                                            홈으로
+                                        </Link>
+                                    </div>
                                 </li>
                                 <li>
                                     <div className="mx-auto bg-[#f1f0ea] text-center p-1 space-y-1 rounded-lg" onClick={() => setToggleDropdown(false)}>공유하기
