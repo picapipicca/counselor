@@ -98,7 +98,8 @@ const QuestionPage = () => {
                     locale: 'ko_KR',
                 }}
             />
-            {answer ? <div className={song.className}>
+            {/* {answer ? <div className={song.className}> */}
+            {answer ? <div>
                 <div className="w-full mx-auto ">
                     <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
                     {/* <Image src="/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" /> */}
