@@ -8,7 +8,7 @@ import useTransText from "@/utils/transText";
 import Card from "@/components/Card";
 import { questionArr } from "@/utils/questionData";
 
-const song = Song_Myung({ weight: "400", subsets: ['latin'], })
+// const song = Song_Myung({ weight: "400", subsets: ['latin'], })
 
 type FormValues = {
     question: any[];
