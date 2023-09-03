@@ -7,6 +7,7 @@ import { DefaultSeo } from "next-seo";
 import useTransText from "@/utils/transText";
 import Card from "@/components/Card";
 import { questionArr } from "@/utils/questionData";
+import { prefix } from "../../../config";
 
 const song = Song_Myung({ weight: "400", subsets: ['latin'], })
 
@@ -101,11 +102,11 @@ const QuestionPage = () => {
                 }}
             />
             {answer ? <div className={song.className}>
-            
+
                 <div className="w-full mx-auto ">
-                    <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
-                    {/* <Image src="/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" /> */}
-                    <Image src="/assets/images/taro_6.jpeg" alt="card" fill className="opacity-20 visible sm:hidden mt-20 max-h-[70vh] overflow-auto" />
+                    <Image src={`${prefix}/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
+                    {/* <Image src="${prefix}/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" /> */}
+                    <Image src={`${prefix}/assets/images/taro_6.jpeg`} alt="card" fill className="opacity-20 visible sm:hidden mt-20 max-h-[70vh] overflow-auto" />
                 </div>
                 <div className="result_txt">
                     <p className="mx-auto text-gray-600">{answer}</p>

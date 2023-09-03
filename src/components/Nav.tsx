@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HamburgerIcon from "./HamburgerIcon";
 import useSNSShare from "@/utils/useSNSShare";
+import { prefix } from "../../config";
 
 const Nav = () => {
     const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -11,7 +12,7 @@ const Nav = () => {
     return (
         <nav className="flex justify-between w-full sm:mb-4 mb-4 pt-3">
             <Link href="/" className="flex gap-2 flex-center">
-                <Image src="/assets/images/crystal_ball.png" alt="logo" width={30} height={30} className="object-contain w-auto h-auto" />
+                <Image src={`${prefix}/assets/images/crystal_ball.png`} alt="logo" width={30} height={30} className="object-contain w-auto h-auto" />
                 <p className="logo_text">연고사</p>
             </Link>
 
