@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* <script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> */}
+        <meta charSet="UTF-8" />
       </Head>
       <body>
         <Main />

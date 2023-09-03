@@ -22,7 +22,7 @@ export default function Home() {
         <Spline scene="https://prod.spline.design/Y54gATaCehiHdyse/scene.splinecode"/>
       </div>
 
-      <button className='w-full mt-6'>
+      <button className='w-full mb-10'>
         <Link
           href="/questions"
           className="text-lg font-semibold hover:animate-bounce w-fit px-6 min-w-[100px] sm:px-10 py-3 rounded-full bg-white shadow-lg mx-auto">
