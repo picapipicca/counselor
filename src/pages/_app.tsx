@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
       <DefaultSeo {...SEO} />
-      <Script strategy='afterInteractive' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`} />
+      <Script strategy='afterInteractive' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG_ID}`} />
       <Script
         id='gtag-init'
         strategy='afterInteractive'
@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '${process.env.GTAG_ID}');`
+        gtag('config', '${process.env.NEXT_PUBLIC_GTAG_ID}');`
         }}
       />
       <Layout>
