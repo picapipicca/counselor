@@ -55,39 +55,37 @@ const QuestionPage = () => {
             method: "POST",
             body: JSON.stringify({ userAnswer }),
         })
-        console.log("0",response.body)
         const reader = response.body?.getReader();
-        console.log("1",reader)
-        // const decoder = new TextDecoder('utf-8');
+        const decoder = new TextDecoder('utf-8');
 
-        // function onParse(event: any) {
-        //     if (event.type === 'event') {
-        //         try {
-        //             const data = JSON.parse(event.data);
-        //             console.log(data.choices[0].delta.content)
-        //             data.choices
-        //                 .filter(({ delta }: any) => !!delta.content)
-        //                 .forEach(({ delta }: any) => {
-        //                     setAnswer((prev: any) => {
-        //                         return `${prev || ''}${delta.content}`
-        //                     });
+        function onParse(event: any) {
+            if (event.type === 'event') {
+                try {
+                    const data = JSON.parse(event.data);
+                    data.choices
+                        .filter(({ delta }: any) => !!delta.content)
+                        .forEach(({ delta }: any) => {
+                            setAnswer((prev: any) => {
+                                return `${prev || ''}${delta.content}`
+                            });
 
 
-        //                 })
-        //         } catch (e) {
-        //             alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
-        //         }
-        //     }
-        // }
-        // const parser = createParser(onParse);
+                        })
+                } catch (e) {
+                    alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
+                }
+            }
+        }
+        const parser = createParser(onParse);
 
-        // while (true && reader) {
-        //     const { value, done } = await reader.read();
-        //     const dataString = decoder.decode(value);
-        //     if (done || dataString.includes('[DONE]')) break;
-        //     parser.feed(dataString);
+        while (true && reader) {
+            const { value, done } = await reader.read();
+            const dataString = decoder.decode(value);
+            console.log("1", dataString);
+            if (done || dataString.includes('[DONE]')) break;
+            parser.feed(dataString);
 
-        // }
+        }
 
     }
 
