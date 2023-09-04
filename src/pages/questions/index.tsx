@@ -56,7 +56,7 @@ const QuestionPage = () => {
             body: JSON.stringify({ userAnswer }),
         })
         const reader = response.body?.getReader();
-        const decoder = new TextDecoder('utf-8');
+        const decoder = new TextDecoder();
 
         function onParse(event: any) {
             if (event.type === 'event') {
@@ -80,8 +80,9 @@ const QuestionPage = () => {
 
         while (true && reader) {
             const { value, done } = await reader.read();
+            console.log("0", value);
+            console.log("1", decoder.decode(value));
             const dataString = decoder.decode(value);
-            console.log("1", dataString);
             if (done || dataString.includes('[DONE]')) break;
             parser.feed(dataString);
 
