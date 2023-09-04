@@ -55,38 +55,55 @@ const QuestionPage = () => {
             method: "POST",
             body: JSON.stringify({ userAnswer }),
         })
-        const reader = response.body?.getReader();
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        const data = response.body;
+        console.log("0",data)
+        if (!data) {
+            return;
+        }
+        const reader = data.getReader();
         const decoder = new TextDecoder();
-
-        function onParse(event: any) {
-            if (event.type === 'event') {
-                try {
-                    const data = JSON.parse(event.data);
-                    data.choices
-                        .filter(({ delta }: any) => !!delta.content)
-                        .forEach(({ delta }: any) => {
-                            setAnswer((prev: any) => {
-                                return `${prev || ''}${delta.content}`
-                            });
-
-
-                        })
-                } catch (e) {
-                    alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
-                }
-            }
+        let done = false;
+        while (!done) {
+            const { value, done: doneReading } = await reader.read();
+            console.log("1",value)
+            done = doneReading;
+            const chunkValue = decoder.decode(value);
+            console.log("2",chunkValue)
+            setAnswer((prev) => prev + chunkValue);
         }
-        const parser = createParser(onParse);
 
-        while (true && reader) {
-            const { value, done } = await reader.read();
-            console.log("0", value);
-            console.log("1", decoder.decode(value));
-            const dataString = decoder.decode(value);
-            if (done || dataString.includes('[DONE]')) break;
-            parser.feed(dataString);
+        // function onParse(event: any) {
+        //     if (event.type === 'event') {
+        //         try {
+        //             const data = JSON.parse(event.data);
+        //             data.choices
+        //                 .filter(({ delta }: any) => !!delta.content)
+        //                 .forEach(({ delta }: any) => {
+        //                     setAnswer((prev: any) => {
+        //                         return `${prev || ''}${delta.content}`
+        //                     });
 
-        }
+
+        //                 })
+        //         } catch (e) {
+        //             alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
+        //         }
+        //     }
+        // }
+        // const parser = createParser(onParse);
+
+        // while (true && reader) {
+        //     const { value, done } = await reader.read();
+        //     console.log("0", value);
+        //     console.log("1", decoder.decode(value));
+        //     const dataString = decoder.decode(value);
+        //     if (done || dataString.includes('[DONE]')) break;
+        //     parser.feed(dataString);
+
+        // }
 
     }
 
