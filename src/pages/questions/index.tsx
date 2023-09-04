@@ -62,7 +62,7 @@ const QuestionPage = () => {
             if (event.type === 'event') {
                 try {
                     const data = JSON.parse(event.data);
-                    console.log("1", data)
+                    console.log("1", new TextDecoder('utf-8').decode(data.choices[0]?.delta?.content))
                     data.choices
                         .filter(({ delta }: any) => !!delta.content)
                         .forEach(({ delta }: any) => {
@@ -82,13 +82,12 @@ const QuestionPage = () => {
         while (true && reader) {
             const { value, done } = await reader.read();
             const dataString = decoder.decode(value);
-            console.log("0", dataString)
             if (done || dataString.includes('[DONE]')) break;
             parser.feed(dataString);
 
         }
     }
-    console.log("2", answer);
+    
     return (
         <main className="w-full">
             <DefaultSeo
@@ -101,7 +100,7 @@ const QuestionPage = () => {
                 }}
             />
             {answer ? <div className={song.className}>
-            
+
                 <div className="w-full mx-auto ">
                     <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
                     {/* <Image src="/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" /> */}
