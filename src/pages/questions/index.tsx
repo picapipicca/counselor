@@ -56,13 +56,13 @@ const QuestionPage = () => {
         })
 
         const reader = response.body?.getReader();
-        const decoder = new TextDecoder();
+        const decoder = new TextDecoder('utf-8');
 
         function onParse(event: any) {
             if (event.type === 'event') {
                 try {
                     const data = JSON.parse(event.data);
-                    console.log("1", new TextDecoder('utf-8').decode(data.choices[0]?.delta?.content))
+                    console.log(data.choices[0].delta.content)
                     data.choices
                         .filter(({ delta }: any) => !!delta.content)
                         .forEach(({ delta }: any) => {
@@ -87,7 +87,6 @@ const QuestionPage = () => {
 
         }
     }
-    
     return (
         <main className="w-full">
             <DefaultSeo

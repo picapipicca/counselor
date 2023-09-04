@@ -40,10 +40,18 @@ export default async function handler(
         }
     })
 
-    return new Response(completion.body, {
+    // return new Response(completion.body, {
+    //     status: 200,
+    //     headers: {
+    //         "Content-Type": "application/json; charset=utf-8",
+    //     }
+    // })
+    const response = new Response(completion.body, {
         status: 200,
         headers: {
-            "Content-Type": "application/json; charset=utf-8",
+            "Content-Type": "application/json",
         }
     })
+    response.headers.set("Content-Type", "application/json; charset=utf-8")
+    return response;
 }
