@@ -54,6 +54,8 @@
   }
 }
 
+/* Tailwind css */
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
@@ -97,5 +99,5 @@
 }
 
 .result_txt {
-  @apply absolute w-[75%] left-[13%] top-[20%] sm:top-[52%] sm:left-1/2 sm:w-[50%] md:w-[40%] lg:w-[28%] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:text-lg items-center
+  @apply absolute w-[75%] left-[13%] top-[20%] sm:top-[54%] sm:left-1/2 sm:w-[50%] md:w-[40%] lg:w-[32%] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:text-lg items-center
 }

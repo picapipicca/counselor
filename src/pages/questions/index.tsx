@@ -7,7 +7,6 @@ import { DefaultSeo } from "next-seo";
 import useTransText from "@/utils/transText";
 import Card from "@/components/Card";
 import { questionArr } from "@/utils/questionData";
-import axios from "axios";
 
 const song = Song_Myung({ weight: "400", subsets: ['latin'], })
 
@@ -59,7 +58,6 @@ const QuestionPage = () => {
             throw new Error(response.statusText);
         }
         const data = response.body;
-        console.log("0",data)
         if (!data) {
             return;
         }
@@ -68,43 +66,10 @@ const QuestionPage = () => {
         let done = false;
         while (!done) {
             const { value, done: doneReading } = await reader.read();
-            console.log("1",value)
             done = doneReading;
             const chunkValue = decoder.decode(value);
-            console.log("2",chunkValue)
             setAnswer((prev) => prev + chunkValue);
         }
-
-        // function onParse(event: any) {
-        //     if (event.type === 'event') {
-        //         try {
-        //             const data = JSON.parse(event.data);
-        //             data.choices
-        //                 .filter(({ delta }: any) => !!delta.content)
-        //                 .forEach(({ delta }: any) => {
-        //                     setAnswer((prev: any) => {
-        //                         return `${prev || ''}${delta.content}`
-        //                     });
-
-
-        //                 })
-        //         } catch (e) {
-        //             alert("AI 컨설팅에 실패했습니다. 다시 시도해 주세요 🥲")
-        //         }
-        //     }
-        // }
-        // const parser = createParser(onParse);
-
-        // while (true && reader) {
-        //     const { value, done } = await reader.read();
-        //     console.log("0", value);
-        //     console.log("1", decoder.decode(value));
-        //     const dataString = decoder.decode(value);
-        //     if (done || dataString.includes('[DONE]')) break;
-        //     parser.feed(dataString);
-
-        // }
-
     }
 
     return (
@@ -120,10 +85,9 @@ const QuestionPage = () => {
             />
             {answer ? <div className={song.className}>
 
-                <div className="w-full mx-auto ">
-                    <Image src={`/assets/images/${chosenImage}`} alt="card" width={530} height={530} className="mx-auto sm:visible collapse" />
-                    {/* <Image src="/assets/images/taro_6.jpeg" alt="card" width={530} height={530} className="opacity-20 mx-auto visible sm:hidden xxs:-mt-[470px] xs:-mt-[750px] sm:-mt-[600px] md:-mt-0" /> */}
-                    <Image src="/assets/images/taro_6.jpeg" alt="card" fill className="opacity-20 visible sm:hidden mt-20 max-h-[70vh] overflow-auto" />
+                <div className="w-full mx-auto pt-10 relative">
+                    <Image src={`/assets/images/${chosenImage}`} alt="card" width={600} height={500} className="mx-auto sm:visible collapse max-h-[80vh]" />
+                    <Image src="/assets/images/taro_6.jpeg" alt="card" fill className="opacity-20 visible sm:hidden mt-10 max-h-[70vh] overflow-auto" />
                 </div>
                 <div className="result_txt">
                     <p className="mx-auto text-gray-600">{answer}</p>
