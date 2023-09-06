@@ -78,7 +78,7 @@
 }
 
 .menu ul {
-  @apply absolute right-0 top-8 -mt-4 sm:mt-3 p-5 opacity-0 transition-all duration-500 ease-in-out w-fit;
+  @apply absolute right-0 top-8 -mt-4 sm:mt-3 p-5 opacity-0 transition-all duration-500 ease-in-out w-fit z-[1000];
 }
 .menu li:hover ul {
   @apply opacity-100 h-fit w-fit min-w-[100px] translate-y-0 space-y-0.5;

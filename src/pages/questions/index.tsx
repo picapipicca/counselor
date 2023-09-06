@@ -84,7 +84,6 @@ const QuestionPage = () => {
                 }}
             />
             {answer ? <div className={song.className}>
-
                 <div className="w-full mx-auto pt-10 relative">
                     <Image src={`/assets/images/${chosenImage}`} alt="card" width={600} height={500} className="mx-auto sm:visible collapse max-h-[80vh]" />
                     <Image src="/assets/images/taro_6.jpeg" alt="card" fill className="opacity-20 visible sm:hidden mt-10 max-h-[70vh] overflow-auto" />
