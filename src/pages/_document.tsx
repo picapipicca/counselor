@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         {/* <script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> */}
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=devide-width" />
         <link rel='shortcut icon' href='/assets/images/favicon.ico' sizes='any' />
         <link
           rel="apple-touch-icon"
