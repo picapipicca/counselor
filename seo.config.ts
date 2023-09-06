@@ -3,14 +3,14 @@ import { DefaultSeoProps } from 'next-seo';
 const config: DefaultSeoProps = {
     titleTemplate: "%s - AI 연애고민 상담소",
     additionalLinkTags: [
-        // {
-        //     rel: 'icon',
-        //     href: '/favicon.ico',
-        // },
-        // {
-        //     rel: 'manifest',
-        //     href: '/site.webmanifest',
-        // },
+        {
+            rel: 'icon',
+            href: '/assets/images/favicon.ico',
+        },
+        {
+            rel: 'manifest',
+            href: '/assets/images/site.webmanifest',
+        },
     ],
     openGraph: {
         type: 'website',
